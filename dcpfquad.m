@@ -90,7 +90,7 @@ Popt = quadprog(H,f,A,b,Aeq,beq,LB,UB);
 % voltage angle at each bus can be calculated.
 
 MPCdc.bus(:,VA) = pinv(Incidence'*D*Incidence)*(Popt/MPCdc.baseMVA);
-MPCdc.bus(:,VA) = MPCdc.bus(:,VA) - MPCdc.bus(MPCdc.bus(:,BUS_TYPE)==REF, VA);
+MPCdc.bus(:,VA) = (MPCdc.bus(:,VA) - MPCdc.bus(MPCdc.bus(:,BUS_TYPE)==REF, VA))*180/pi;
 
 
 % Next the bus power demand and dispatch need to be updated
@@ -119,9 +119,9 @@ end
 aus = shaperead("aus.shp");
 load edge_geotbl
 pyomoang = readtable('vang_pyomo.csv');
-pyomoang = pyomoang(~nodesTAS, :);
+pyomoang = pyomoang{~nodesTAS, :}*180/pi;
 nooptang = pinv(Incidence'*D*Incidence)*(0.5*(LB+UB)/MPCdc.baseMVA);
-nooptang = nooptang - nooptang(MPCdc.bus(:,BUS_TYPE)==REF);
+nooptang = (nooptang - nooptang(MPCdc.bus(:,BUS_TYPE)==REF))*180/pi;
 
 
 figure;
@@ -133,25 +133,25 @@ for i = 1:3
     plot(aus(4).X, aus(4).Y, 'k');
     axis('square');
     for j = 1:nline
-        plot(edge_geotbl.Longitude{i}, edge_geotbl.Latitude{i}, 'Color', [0.7 0.7 0.7]);
+        plot(edge_geotbl.Longitude{j}, edge_geotbl.Latitude{j}, 'Color', [0.7 0.7 0.7]);
     end
 end
 
 subplot(1,3,1);
 title('Quadprog');
 colormap('jet');
-scatter(node_tbl.LONGITUDE, node_tbl.LATITUDE, 5, MPCdc.bus(:,VA)*180/pi, 'filled');
-caxis(minmax([MPCdc.bus(:,VA); pyomoang{:,2}; nooptang]')*180/pi);
+scatter(node_tbl.LONGITUDE, node_tbl.LATITUDE, 5, MPCdc.bus(:,VA), 'filled');
+caxis(minmax([MPCdc.bus(:,VA); pyomoang(:,2); nooptang]'));
 
 subplot(1,3,2);
 title('Pyomo');
-scatter(node_tbl.LONGITUDE, node_tbl.LATITUDE, 5, pyomoang{:,2}*180/pi, 'filled');
-caxis(minmax([MPCdc.bus(:,VA); pyomoang{:,2}; nooptang]')*180/pi);
+scatter(node_tbl.LONGITUDE, node_tbl.LATITUDE, 5, pyomoang(:,2), 'filled');
+caxis(minmax([MPCdc.bus(:,VA); pyomoang(:,2); nooptang]'));
 
 subplot(1,3,3);
 title('No Optimisation');
-scatter(node_tbl.LONGITUDE, node_tbl.LATITUDE, 5, nooptang*180/pi, 'filled');
-caxis(minmax([MPCdc.bus(:,VA); pyomoang{:,2}; nooptang]')*180/pi);
+scatter(node_tbl.LONGITUDE, node_tbl.LATITUDE, 5, nooptang, 'filled');
+caxis(minmax([MPCdc.bus(:,VA); pyomoang(:,2); nooptang]'));
 
 colorbar('Position', [0.1, 0.25, 0.8, 0.02], 'Orientation', 'horizontal');
 set(subplot(1, 3, 1), 'Position', [0.1, 0.25, 0.25, 0.7]);
@@ -163,12 +163,12 @@ set(subplot(1, 3, 3), 'Position', [0.7, 0.25, 0.25, 0.7]);
 
 figure;
 subplot(2,1,1);
-boxplot([MPCdc.bus(:,VA), pyomoang{:,2}, nooptang]*180/pi, ...
+boxplot([MPCdc.bus(:,VA), pyomoang(:,2), nooptang], ...
     'Labels', {'Quadprog', 'Pyomo', 'No optimisation'});
 title('Voltage Angles');
 
 subplot(2,1,2);
-boxplot(Incidence*[MPCdc.bus(:,VA), pyomoang{:,2}, nooptang]*180/pi, ...
+boxplot(Incidence*[MPCdc.bus(:,VA), pyomoang(:,2), nooptang], ...
     'Labels', {'Quadprog', 'Pyomo', 'No optimisation'});
 title('Voltage Angle Differences');
 
@@ -191,7 +191,7 @@ for i = 1:3
     plot(aus(4).X, aus(4).Y, 'k');
     axis('square');
     for j = 1:nline
-        plot(edge_geotbl.Longitude{i}, edge_geotbl.Latitude{i}, 'Color', [0.7 0.7 0.7]);
+        plot(edge_geotbl.Longitude{j}, edge_geotbl.Latitude{j}, 'Color', [0.7 0.7 0.7]);
     end
 end
 
