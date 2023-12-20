@@ -75,4 +75,34 @@ scatter(node_tbl.LONGITUDE, node_tbl.LATITUDE, 5, (MPCr0.bus(:,VA)-MPCdc.bus(:,V
 colorbar;
 
 %% Plotting Power Flows
+figure;
+for i = 1:2
+    subplot(1,2,i);
+    plot(aus(1).X, aus(1).Y, 'k'); hold on;
+    plot(aus(2).X, aus(2).Y, 'k');
+    plot(aus(3).X, aus(3).Y, 'k');
+    plot(aus(4).X, aus(4).Y, 'k');
+    axis('square');
+end
 
+jetcols = jet;
+
+subplot(1,2,1);
+title('Active Power Flow');
+colormap('jet');
+caxis([min(abs(MPCr0.branch(:,PF))), max(abs(MPCr0.branch(:,PF)))]);
+for k = 1:nline
+    plot(edge_geotbl.Longitude{k}, edge_geotbl.Latitude{k}, ...
+        'Color', jetcols(round(interp1(caxis, [1 256], abs(MPCr0.branch(k,PF)))),:));
+end
+colorbar;
+
+subplot(1,2,2);
+title('Reactive Power Flow');
+colormap('jet');
+caxis([min(abs(MPCr0.branch(:,QF))), max(abs(MPCr0.branch(:,QF)))]);
+for k = 1:nline
+    plot(edge_geotbl.Longitude{k}, edge_geotbl.Latitude{k}, ...
+        'Color', jetcols(round(interp1(caxis, [1 256], abs(MPCr0.branch(k,QF)))),:));
+end
+colorbar;
