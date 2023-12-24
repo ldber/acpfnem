@@ -100,7 +100,7 @@ xlim([0,100]);
 legend();
 
 %% Plotting Voltage RMS and Angle
-if 1
+if 0
 aus = shaperead("aus.shp");
 fig = figure;
 fig.WindowState = 'maximized';
@@ -140,3 +140,35 @@ for i = 1:1:nconverged
     pause(0.0001);
 end
 end
+
+%% Checking aggregate demand
+StateDemandComparison = zeros(nreg,2);
+
+for i = 1:nreg
+    StateDemandComparison(i,1) = demand_tbl.(NEMREGIONS{i})(timeidx);
+    StateDemandComparison(i,2) = sum(MPCr0.bus(MPCr0.bus(:,BUS_AREA)==i, PD));
+end
+
+%% Checking interconnector flows
+aclink_tbl = readtable('network_ac_links.csv');
+naclink = size(aclink_tbl,1);
+
+ACLinkComparison = zeros(naclink, 2);
+
+for i = 1:naclink
+    mask = MPCr0.branch(:,F_BUS)==aclink_tbl.FROM_NODE(i) & MPCr0.branch(:,T_BUS)==aclink_tbl.TO_NODE(i);
+    if any(mask)
+        ACLinkComparison(i,1) = MPCr0.branch(mask, PF);
+    else
+        mask = MPCr0.branch(:,F_BUS)==aclink_tbl.TO_NODE(i) & MPCr0.branch(:,T_BUS)==aclink_tbl.FROM_NODE(i);
+        ACLinkComparison(i,1) = -MPCr0.branch(mask, PF);
+    end
+    
+    mask = strcmp(interconnector_tbl.INTERCONNECTORID, aclink_tbl.INTERCONNECTOR_ID(i));
+    ACLinkComparison(i,2) = interconnector_tbl(timemask&mask,:).MWFLOW;
+end
+
+ACLinkComparison(4,1) = sum(ACLinkComparison(4:8,1));
+ACLinkComparison = ACLinkComparison(1:4,:);
+
+%IntFlows = zeros
