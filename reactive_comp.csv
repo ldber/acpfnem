@@ -1,0 +1,118 @@
+﻿State,Bus Name,Voltage,Type,Number,Mvar,Mvar,
+SA,Para,,C,2,100,,200
+SA,Para,,SVC,2,-80,80,
+SA,Happy Valley,,C,1,100,,100
+SA,Cherry Gardens,,C,1,100,,100
+SA,Hummocks,,C,1,18,,18
+SA,Tailem Bend,,C,1,100,,100
+SA,South East,,C,1,100,,100
+SA,South East,,SVC,2,-50,80,
+VIC,Red Cliffs,,C,2,40,,80
+VIC,Horsham,,SVC,1,-25,50,
+VIC,Heywood,,C,1,157,,157
+VIC,Keerang,,SVC,1,-25,50,
+VIC,Terang,,C,2,150,,300
+VIC,Keilor,,C,1,200,,200
+VIC,Altona,,C,1,200,,200
+VIC,Brooklyn,,C,1,200,,200
+VIC,Brooklyn,,SC,1,-60,110,
+VIC,Fishermans Bend,,C,1,200,,200
+VIC,Fishermans Bend,,SC,1,-90,120,
+VIC,Templestowe,,C,1,200,,200
+VIC,Templestowe,,SC,1,-90,120,
+VIC,Dederang,,C,1,100,,100
+VIC,Dederang,,C,2,225,,450
+VIC,Rowville,,C,3,200,,600
+VIC,Rowville,,SC,2,-60,120,
+VIC,Wodonga,,C,1,100,,100
+NSW,Buronga,,SVC,2,-25,25,
+NSW,Darlington Point,,C,3,20,,60
+NSW,Canberra,,C,1,120,,120
+NSW,Canberra,,C,2,80,,160
+NSW,Wagga Wagga,,C,2,80,,160
+NSW,Wagga Wagga,,C,1,50,,50
+NSW,Kemps Creek,,C,2,200,,400
+NSW,Kemps Creek,,SVC,2,-100,150,
+NSW,Tallawarra,,C,2,120,,240
+NSW,Sydney South,,C,1,120,,120
+NSW,Sydney South,,C,1,80,,80
+NSW,Wellington,,C,2,20,,40
+NSW,Wellington,,C,1,40,,40
+NSW,Sydney West,,C,3,160,,480
+NSW,Sydney West,,C,1,80,,80
+NSW,Sydney West,,SVC,1,-100,280,
+NSW,Sydney North,,C,3,120,,360
+NSW,Sydney North,,C,2,200,,400
+NSW,Sydney North,,C,1,110,,110
+NSW,Sydney North,,C,1,80,,80
+NSW,Sydney North,,C,2,200,,400
+NSW,Tuggerah,,C,2,40,,80
+NSW,Vineyard,,C,1,60,,60
+NSW,Vales Point,,C,2,200,,400
+NSW,Regentville,,C,2,80,,160
+NSW,Tomago,,C,1,220,,220
+NSW,Newcastle,,C,2,120,,240
+NSW,Newcastle,,C,2,80,,160
+NSW,Tamworth,,C,1,120,,120
+NSW,Muswellbrook,,C,1,120,,120
+NSW,Lismore,,C,2,30,,60
+NSW,Lismore,,SVC,1,-100,150,
+NSW,Armidale,,SVC,1,-120,280,
+NSW,Armidale,,C,2,30,,60
+NSW,Armidale 132,,C,1,120,,120
+NSW,Armidale 132,,C,1,80,,80
+QLD,Molendinar,,C,1,50,,50
+QLD,Loganlea,,C,1,20,,20
+QLD,Loganlea,,C,3,50,,150
+QLD,Beenleigh,,C,1,20,,20
+QLD,Murarrie,,C,2,50,,100
+QLD,Belmont,,C,4,120,,480
+QLD,Belmont,,C,3,50,,150
+QLD,Mudgeeraba,,C,3,50,,150
+QLD,Mudgeeraba,,C,1,120,,120
+QLD,Greenbank,,SVC,1,-100,350,
+QLD,Greenbank,,C,2,120,,240
+QLD,Greenbank,,C,3,200,,600
+QLD,Goodna,,C,1,50,,50
+QLD,Rocklea,,C,3,50,,150
+QLD,Blackwall,,SVC,1,-50,250,
+QLD,Blackwall,,C,2,120,,240
+QLD,Mt England,,C,2,120,,240
+QLD,Millmerran,,C,1,200,,200
+QLD,Braemar,,SVC,1,-80,150,
+QLD,Braemar,,C,1,120,,120
+QLD,Tarong,,C,1,200,,200
+QLD,Abermain,,C,1,50,,50
+QLD,Abermain,,C,1,20,,20
+QLD,Middle Ridge,,C,2,50,,100
+QLD,South Pine,,SVC,1,-100,350,
+QLD,South Pine,,C,3,50,,150
+QLD,South Pine,,C,4,120,,480
+QLD,Palmwoods,,C,4,50,,200
+QLD,Palmwoods,,C,1,120,,120
+QLD,Woolooga,,SVC,1,-100,350,
+QLD,Woolooga,,C,1,20,,20
+QLD,Gin Gin,,C,1,50,,50
+QLD,Gin Gin,,C,1,120,,120
+QLD,Boyne Island,,C,1,90,,90
+QLD,Boyne Island,,C,2,45,,90
+QLD,Dysart,,SVC,1,-10,13,
+QLD,Lilyvale,,C,2,40,,80
+QLD,Moranbah,,SVC,1,-55,45,
+QLD,Nebo,,SVC,1,-90,300,
+QLD,Nebo,,C,2,120,,240
+QLD,Cairns,,C,2,30,,60
+QLD,Cairns,,C,1,20,,20
+QLD,Woree,,SVC,1,-80,150,
+QLD,Strathmore,,SVC,1,-80,260,
+QLD,Ross,,SVC,1,-90,170,
+QLD,Innisfield,,C,1,20,,20
+QLD,Chalumbin,,C,1,50,,50
+QLD,Mackay,,C,2,15,,30
+QLD,Pioneer Valley,,C,1,20,,20
+QLD,Collinsville,,C,1,20,,20
+QLD,Clare South,,C,1,20,,20
+QLD,Ross,,C,1,50,,50
+QLD,Garbutt,,C,2,15,,30
+QLD,Townsville South,,C,2,50,,100
+QLD,Townsville South,,C,2,20,,40
